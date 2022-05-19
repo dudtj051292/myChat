@@ -10,7 +10,7 @@
         <StackPanel Orientation="Vertical" Margin="40,15,40,5">
             <TextBlock Foreground="Gray" FontSize="35" FontFamily="Ebrima" Text="LOGIN"></TextBlock>
             <TextBlock Foreground="Gray" FontSize="13" Text="이름과 서버ip를 입력해주세요"></TextBlock>
-            <TextBlock Text="이름" Foreground="Gray" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
+            <TextBlock Text="사번" Foreground="Gray" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
             <Border BorderThickness="1.3" BorderBrush="Gray" Height="40" CornerRadius="13" Padding="5,10,5,5">
                 <TextBox x:Name="NameTextBox" BorderThickness="0" TextAlignment="Center" FontSize="15"></TextBox>
             </Border>
