@@ -61,7 +61,7 @@ namespace myChat
 
 
 
-            writer.WriteLine("getMember");
+            writer.WriteLine("getMember" );
 
             DataTable Member = Utils.Utils.getJSONtoDataTable(reader.ReadLine());
 
@@ -93,16 +93,8 @@ namespace myChat
             TextBlock block = sender as TextBlock;
 
             string str = block.Text;
+            this.chatFrame.Navigate("ChatRoom.xaml", UriKind.RelativeOrAbsolute);
 
-            #region
-            MakeChattingRoom(str);
-            #endregion
-            
-
-        }
-
-        private void MakeChattingRoom(string chatMem)
-        {
         }
 
     }

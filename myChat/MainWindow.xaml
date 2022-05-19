@@ -3,11 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxwuin="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/navigation"
         xmlns:self ="clr-namespace:myChat"
         xmlns:local="clr-namespace:myChat"
-        
-
-        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Name="BackGround" x:Class="myChat.MainWindow"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" x:Name="BackGround" x:Class="myChat.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1000">
     <dxlc:LayoutControl>
@@ -20,10 +19,10 @@
                 </TreeView.ItemTemplate>
             </TreeView>
         </dxlc:LayoutGroup>
-        <dxlc:LayoutGroup Orientation="Vertical">
-            <dxlc:LayoutItem VerticalAlignment="Stretch" >
-                
-            </dxlc:LayoutItem>
+        <dxlc:LayoutGroup Header="사용자"  View="GroupBox" Margin="0,0,0,0">
+            <Frame Name ="chatFrame" Grid.Row="1"
+                   NavigationUIVisibility="Visible"/>
         </dxlc:LayoutGroup>
+
     </dxlc:LayoutControl>
 </Window>

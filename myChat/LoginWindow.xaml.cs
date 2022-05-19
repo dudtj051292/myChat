@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataModule;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,14 @@ namespace myChat
 
         private void Login_Btn_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow window = new MainWindow();
+            UserInfo info = new UserInfo();
+
+            info.setSeq(NameTextBox.Text);
+            window.ShowDialog();
+
             
+            this.Close();
         }
     }
 }
