@@ -126,9 +126,17 @@
       <Project>{C6980CBA-F443-49E4-9FD5-5675D9CFB125}</Project>
       <Name>DataModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\myChat.Service\myChat.Service.csproj">
+      <Project>{32B96284-33A4-40A7-8D9A-4974DA2BEB06}</Project>
+      <Name>myChat.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\myChat.Utils\myChat.Utils.csproj">
       <Project>{e37e03f8-f2c6-4ae3-a4bd-157c18b23b06}</Project>
       <Name>myChat.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\myChatClass\myChatClass.csproj">
+      <Project>{069ad90e-cae9-430a-a681-2a6024ec14e3}</Project>
+      <Name>myChatClass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,14 +2,23 @@
 
 namespace myChatClass
 {
-    class Fnc
+    public sealed class Fnc
     {
-        public Fnc()
+        private Fnc() { }
+
+        private static Fnc _fncInstance = new Fnc();
+
+        public static Fnc getFnc()
         {
-            this.Workers = new ObservableCollection<FncWorker>();
+            if(_fncInstance == null)
+            {
+                _fncInstance = new Fnc();
+                return _fncInstance;
+            }
+            return _fncInstance;
         }
-        public string Name { get; set; }
-        public ObservableCollection<FncWorker> Workers { get; set; }
+
+        public static ObservableCollection<FncWorker> Workers { get; set; }
 
     }
 
@@ -20,10 +29,17 @@ namespace myChatClass
 
     public class FncWorker
     {
+        public FncWorker(string name, string title, string dept, decimal seq) {
+            this.name = name;
+            this.title = title;
+            this.dept = dept;
+            this.seq = seq;
+        }
+
         public string name { get; set; }
         public string title { get; set; }
         public string dept { get; set; }
-        public int seq { get; set; }
+        public decimal seq { get; set; }
 
     }
 }

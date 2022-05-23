@@ -9,13 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using myChatClass;
+using myChat;
 
 namespace myChat
 {
@@ -57,28 +53,32 @@ namespace myChat
 
             writer.WriteLine("getDept");
 
-            DataTable dept = Utils.Utils.getJSONtoDataTable(reader.ReadLine());
+            DataTable dept = Utils.getJSONtoDataTable(reader.ReadLine());
 
 
 
             writer.WriteLine("getMember" );
 
-            DataTable Member = Utils.Utils.getJSONtoDataTable(reader.ReadLine());
+            DataTable Member = Utils.getJSONtoDataTable(reader.ReadLine());
 
 
             #region 가변적treeView구성
             foreach (DataRow row in dept.Rows)
             {
-                MemberItem depart = new MemberItem() { Title = Utils.Utils.getObjectToString(row["DEPTNAME"]) };
+                MemberItem depart = new MemberItem() { Title = Utils.getObjectToString(row["DEPTNAME"]) };
 
                 foreach (DataRow dr in Member.Rows)
                 {
-                    if (Utils.Utils.getObjectToString(row["DEPT"]) 
-                        == Utils.Utils.getObjectToString(dr["DEPT"]))
+                    if (Utils.getObjectToString(row["DEPT"])
+                        == Utils.getObjectToString(dr["DEPT"]))
                     {
-                        MemberItem member = new MemberItem() {  Title = Utils.Utils.getObjectToString(dr["NAME"]) + " " + Utils.Utils.getObjectToString(dr["TITLE"]) };
+                        MemberItem member = new MemberItem() { Title = Utils.getObjectToString(dr["NAME"]) + " " + Utils.getObjectToString(dr["TITLE"]) };
                         depart.Items.Add(member);
-
+                        FncWorker worker = new FncWorker(Utils.getObjectToString(dr["NAME"]), 
+                                                         Utils.getObjectToString(dr["TITLE"]) ,
+                                                         Utils.getObjectToString(row["DEPT"]),
+                                                         Utils.getObjectToDecimal(dr["SEQ"]));
+                        Fnc.Workers.Add(worker);
                     }
 
                 }

@@ -1,4 +1,5 @@
 ﻿using DataModule;
+using myChat.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace myChat
         {
             MainWindow window = new MainWindow();
             UserInfo info = new UserInfo();
+            //LoginModule.userInfo.setSeq(NameTextBox.Text);
 
             info.setSeq(NameTextBox.Text);
             window.ShowDialog();
