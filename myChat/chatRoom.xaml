@@ -14,7 +14,7 @@
         <dxlc:LayoutControl Orientation="Vertical">
             <dxlc:LayoutItem />
             <dxlc:LayoutItem  VerticalAlignment="Stretch">
-                <ListBox x:Name="ListBoxMain" Grid.Column="1" Grid.Row="1">
+                <ListBox x:Name="ListBoxMain" Grid.Column="1" Grid.Row="1" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>

@@ -32,13 +32,23 @@ namespace myChat
             {
                 Connect();
             }
-
-
         }
 
+        public MainWindow(string sabun)
+        {
+            InitializeComponent();
+            if (client != null)
+            {
+                Console.WriteLine("이미 연결되어있습니다.");
+            }
+            else
+            {
+                Connect();
+            }
+        }
+    
         private void Connect()
         {
-            // 이전게시물에서 다룬 내용이니 따로 다루지 않겠습니다.
             client = new TcpClient();
             client.Connect("127.0.0.1", 9999);
             NetworkStream stream = client.GetStream();

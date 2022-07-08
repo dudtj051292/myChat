@@ -11,33 +11,41 @@ using System.Threading.Tasks;
 
 namespace myChat.Service
 {
-    public sealed class ChatModule
+    public sealed class Connector
     {
         private static TcpClient client = null;
         private static NetworkStream stream = null;
         private static StreamWriter writer  = null;
         private static StreamReader reader  = null;
+        
+        // 커넥터는 초기 생성시 was와 연결한다.
+        private Connector() {  }
+        private static readonly Lazy<Connector> _Connector = new Lazy<Connector>(() => new Connector() );
 
-        private ChatModule() { }
-
-        private static ChatModule _chatModule = null;
-
-        public static ChatModule GetChatModule()
+        public static Connector GetChatModule
         {
-            if(_chatModule == null)
-            {
-                _chatModule = new ChatModule();
-                Connect();
-            }
-            return _chatModule;
+            get { return _Connector.Value; }
         }
 
-        public static void Connect()
+        public static LOGIN_STATUS Login(string sabun, string pw, string ip)
         {
-            if(client == null)
+            if (client != null && client.Connected)
+            {
+
+            }
+            else
+            {
+                Connect(sabun, pw, ip);
+            }
+            return LoginModule.Login(sabun, pw, ip);
+        }
+        public static void Connect(string sabun, string pw, string ip)
+        {
+            //서버에 연결! Connector 클래스가 생성될때 생성되도록 한다.
+            if (client == null)
             {
                 client = new TcpClient();
-                client.Connect(Definition.SERVER_IP, Definition.SERVER_PORT);
+                client.Connect(ip, Definition.SERVER_PORT);
             }
             stream = client.GetStream();
 
@@ -52,7 +60,6 @@ namespace myChat.Service
         public static void DataTransfer(string message)
         {
             writer.WriteLineAsync(message);
-            DataTable dt = null;
         }
 
         public static void MessageTransfer(string message)
