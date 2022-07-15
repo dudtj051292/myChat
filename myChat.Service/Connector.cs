@@ -15,12 +15,12 @@ namespace myChat.Service
     {
         private static TcpClient client = null;
         private static NetworkStream stream = null;
-        private static StreamWriter writer  = null;
-        private static StreamReader reader  = null;
-        
+        private static StreamWriter writer = null;
+        private static StreamReader reader = null;
+
         // 커넥터는 초기 생성시 was와 연결한다.
-        private Connector() {  }
-        private static readonly Lazy<Connector> _Connector = new Lazy<Connector>(() => new Connector() );
+        private Connector() { }
+        private static readonly Lazy<Connector> _Connector = new Lazy<Connector>(() => new Connector());
 
         public static Connector GetChatModule
         {
@@ -42,7 +42,7 @@ namespace myChat.Service
         public static void Connect(string sabun, string pw, string ip)
         {
             //서버에 연결! Connector 클래스가 생성될때 생성되도록 한다.
-            if (client == null)
+            if (client == null || client.Connected == false)
             {
                 client = new TcpClient();
                 client.Connect(ip, Definition.SERVER_PORT);
